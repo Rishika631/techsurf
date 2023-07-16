@@ -1,0 +1,8 @@
+requests
+Pillow
+streamlit
+requests_toolbelt
+openai
+torch
+torchvision
+pymongo
