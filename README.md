@@ -1,14 +1,15 @@
-## Digital Asset Management (DAM) App
+# Digital Asset Management (DAM) App
 The Digital Asset Management (DAM) app is a full-stack web application developed using Streamlit. It empowers users to manage and manipulate digital images efficiently. The app offers a range of features, including image transformation, AI-powered image analysis, image resizing with AI analysis, and image optimization.
 
 ## Deployed website link: https://techsurfrishika.streamlit.app/
 ## Live video demo link: https://drive.google.com/file/d/1ai2EYw-NWQfC8MWsM7FGfet_l0iqTURx/view?usp=sharing
 
-## Table of Contents
-# Features
-# Tech Stack
-# Installation
-# How to Use
+# Table of Contents
+
+ Features
+ Tech Stack
+ Installation
+ How to Use
 
 # Features
 Image Transformation: Users can perform various image transformations, including cropping, rotating, applying focal points, enhancing brightness, overlaying images, and adding frames.
