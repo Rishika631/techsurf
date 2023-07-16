@@ -1,0 +1,64 @@
+## Digital Asset Management (DAM) App
+The Digital Asset Management (DAM) app is a full-stack web application developed using Streamlit. It empowers users to manage and manipulate digital images efficiently. The app offers a range of features, including image transformation, AI-powered image analysis, image resizing with AI analysis, and image optimization.
+
+## Deployed website link: https://techsurfrishika.streamlit.app/
+## Live video demo link: https://drive.google.com/file/d/1ai2EYw-NWQfC8MWsM7FGfet_l0iqTURx/view?usp=sharing
+
+## Table of Contents
+# Features
+# Tech Stack
+# Installation
+# How to Use
+
+# Features
+Image Transformation: Users can perform various image transformations, including cropping, rotating, applying focal points, enhancing brightness, overlaying images, and adding frames.
+
+AI Analysis and Tagging: The app utilizes the CLIP model to analyze uploaded images and generate relevant tags based on their content, making image searching and organization easier.
+
+Image Resize with AI Analysis: Users can resize images while preserving essential details. The AI analysis ensures that the resized images maintain their content integrity and quality.
+
+Image Optimization: The app offers image optimization techniques, such as format conversion and compression, to enhance image performance and loading speed.
+
+# Tech Stack
+The app is built using the following technologies:
+
+Streamlit: For the web application framework and user interface.
+PyTorch and torchvision: For image processing and transformations.
+PIL (Python Imaging Library): For image handling and manipulation.
+Hugging Face Transformers: For utilizing the CLIP model for AI analysis.
+OpenAI: For integrating the OpenAI GPT-2 model for image caption generation.
+MongoDB: For storing generated captions and image tags.
+
+# Installation
+Clone the repository to your local machine:
+bash
+Copy code
+git clone https://github.com/yourusername/dam-app.git
+cd dam-app
+Create a virtual environment (optional but recommended):
+bash
+Copy code
+python -m venv venv
+source venv/bin/activate   # On Windows: venv\Scripts\activate
+Install the required dependencies:
+bash
+Copy code
+pip install -r requirements.txt
+Set up the OpenAI API key:
+Replace <APIKEY> in the main.py file with your actual OpenAI API key.
+
+Set up MongoDB connection:
+Replace the MongoDB connection string in the main.py file with your MongoDB connection string.
+
+# How to Use
+Ensure you have activated the virtual environment (if created) using:
+bash
+Copy code
+source venv/bin/activate   # On Windows: venv\Scripts\activate
+Run the Streamlit app:
+bash
+Copy code
+streamlit run main.py
+The app will launch in your browser. Use the sidebar to select the desired function (Image Transformation, AI Analysis, Image Resize, or Image Optimization) and follow the on-screen instructions to upload and manipulate images.
+
+For AI Analysis and Image Captioning, make sure to provide the necessary API key and model authorization in the code.
