@@ -4,7 +4,7 @@ from torchvision.transforms import functional as F
 from PIL import Image, ImageOps, ImageEnhance, ImageFilter
 import os
 import requests
-from transformers import CLIPProcessor, CLIPModel
+#from transformers import CLIPProcessor, CLIPModel
 import openai
 import io
 import pymongo
