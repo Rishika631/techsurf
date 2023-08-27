@@ -18,7 +18,7 @@ headers = {"Authorization": "Bearer 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"}
 client = pymongo.MongoClient("mongodb+srv://Rishika:taylorswift@cluster0.acug8d2.mongodb.net/?retryWrites=true&w=majority")
 db = client["image_tags_db"]
 collection = db["image_tags"]
-collection = db["transformation_logs"]
+collection1 = db["transformation_logs"]
 
 # Initialize a list to store transformation logs
 transformation_logs = []
@@ -153,9 +153,8 @@ def main():
                      "right": right,
                      "bottom": bottom,
                  },
-                    "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                    }
-                collection.insert_one(log_entry)
+                }
+                collection1.insert_one(log_entry)
 
             elif transformation_option == "Transform":
                 # Transform
