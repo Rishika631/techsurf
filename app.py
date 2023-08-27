@@ -5,20 +5,20 @@ from PIL import Image, ImageOps, ImageEnhance, ImageFilter
 import os
 import requests
 from datetime import datetime
-from transformers import CLIPProcessor, CLIPModel
+from transformers import CLIPModel
 import openai
 import io
 import pymongo
 
 # Set your OpenAI API key
-openai.api_key = <APIKEY>
+# openai.api_key = <APIKEY>
 API_URL = "https://api-inference.huggingface.co/models/nlpconnect/vit-gpt2-image-captioning"
 headers = {"Authorization": "Bearer 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"}
 # Set up MongoDB connection
 client = pymongo.MongoClient("mongodb+srv://Rishika:taylorswift@cluster0.acug8d2.mongodb.net/?retryWrites=true&w=majority")
 db = client["image_tags_db"]
-collection = db["image_tags"]
-collection1 = db["transformation_logs"]
+collection1 = db["image_tags"]
+collection = db["transformation_logs"]
 
 # Initialize a list to store transformation logs
 transformation_logs = []
@@ -31,11 +31,17 @@ def log_transformation_details(transformation_type, details):
         "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
     }
     collection.insert_one(log_entry)
-    transformation_logs.append(log_entry)
+    # transformation_logs.append(log_entry)
 
 # Image Transformation: Crop
 def crop_image(image, left, top, right, bottom):
     cropped_image = image.crop((left, top, right, bottom))
+    log_transformation_details("Crop", {
+                    "left": left,
+                    "top": top,
+                    "right": right,
+                    "bottom": bottom,
+                })
     return cropped_image
 
 # Image Transformation: Transform
@@ -137,24 +143,20 @@ def main():
                 right = st.slider("Right", 0, image.width, image.width)
                 bottom = st.slider("Bottom", 0, image.height, image.height)
                 cropped_image = crop_image(image, left, top, right, bottom)
+                
                 st.image(cropped_image, use_column_width=True)
 
-                # log_transformation_details("Crop", {
-                #     "left": left,
-                #     "top": top,
-                #     "right": right,
-                #     "bottom": bottom,
-                # })
-                log_entry = {
-                    "type": "Crop",
-                    "details": {
-                     "left": left,
-                     "top": top,
-                     "right": right,
-                     "bottom": bottom,
-                 },
-                }
-                collection1.insert_one(log_entry)
+                
+                # log_entry = {
+                #     "type": "Crop",
+                #     "details": {
+                #      "left": left,
+                #      "top": top,
+                #      "right": right,
+                #      "bottom": bottom,
+                #  },
+                # }
+                # collection1.insert_one(log_entry)
 
             elif transformation_option == "Transform":
                 # Transform
@@ -214,7 +216,7 @@ def main():
 
         # Store the generated captions in the MongoDB database
             db_entry = {"image_path": uploaded_file.name, "captions": output.split("\n")}
-            collection.insert_one(db_entry)
+            collection1.insert_one(db_entry)
 
     elif function == "Image Resize":
         # Image Resize with AI Analysis
