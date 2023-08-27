@@ -17,7 +17,7 @@ headers = {"Authorization": "Bearer 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"}
 # Set up MongoDB connection
 client = pymongo.MongoClient("mongodb+srv://Rishika:taylorswift@cluster0.acug8d2.mongodb.net/?retryWrites=true&w=majority")
 db = client["image_tags_db"]
-collection = db["image_logs"]
+collection = db["transformation_logs"]
 
 # Initialize a list to store transformation logs
 transformation_logs = []
@@ -185,21 +185,6 @@ def main():
                 padding = st.slider("Padding", 0, 50, 10)
                 framed_image = apply_frame(image, padding)
                 st.image(framed_image, use_column_width=True)
-
-            if st.button("Save Image"):
-                if "transformed_image" in locals():
-                    # Save the transformed image to a file
-                    transformed_image.save("output_transformed.jpg")  # You can use a unique filename
-
-                    # Log transformation details to your backend
-                    for log in transformation_logs:
-                        collection.insert_one(log)  # Store the log in your MongoDB collection
-
-                    # Display a success message
-                    st.success("Image saved successfully!")
-
-                else:
-                    st.warning("No image has been transformed yet.")
             
 
     elif function == "AI Analysis":
