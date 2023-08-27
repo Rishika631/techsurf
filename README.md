@@ -29,11 +29,17 @@ Drawing Canvas: Explore your creativity with a built-in drawing tool.
 The app is built using the following technologies:
 
 Streamlit: For the web application framework and user interface.
+
 PyTorch and torchvision: For image processing and transformations.
+
 PIL (Python Imaging Library): For image handling and manipulation.
+
 Hugging Face Transformers: For utilizing the CLIP model for AI analysis.
+
 OpenAI: For integrating the OpenAI GPT-2 model for image caption generation.
+
 HTML,CSS,Javascript: For generating built in drawing canvas.
+
 MongoDB: For storing generated captions and image tags.
 
 # Installation
