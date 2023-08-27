@@ -2,7 +2,7 @@
 The Digital Asset Management (DAM) app is a full-stack web application developed using Streamlit. It empowers users to manage and manipulate digital images efficiently. The app offers a range of features, including image transformation, AI-powered image analysis, image resizing with AI analysis, built in drawing canvas and image optimization and also store all the changes made in the images as logs in the backend so that the user can go back and see changes, revert back to a particular unedited picture, for collabaration it can be helpful to see who did what changes and many more4 uses of logging the editing of images.
 
 ## Deployed website link: https://techsurfrishika.streamlit.app/
-## Live video demo link: https://drive.google.com/file/d/1ai2EYw-NWQfC8MWsM7FGfet_l0iqTURx/view?usp=sharing
+## Live video demo link: [https://drive.google.com/file/d/1ai2EYw-NWQfC8MWsM7FGfet_l0iqTURx/view?usp=sharing](https://drive.google.com/file/d/1x7OlDUPK88rCkIYkFvCLYnU0niap28wt/view?usp=sharing)
 
 # Table of Contents
 
@@ -37,7 +37,7 @@ MongoDB: For storing generated captions and image tags.
 Clone the repository to your local machine:
 bash
 Copy code
-git clone https://github.com/yourusername/dam-app.git
+'''git clone https://github.com/yourusername/dam-app.git'''
 cd dam-app
 Create a virtual environment (optional but recommended):
 bash
