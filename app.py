@@ -17,6 +17,7 @@ headers = {"Authorization": "Bearer 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"}
 # Set up MongoDB connection
 client = pymongo.MongoClient("mongodb+srv://Rishika:taylorswift@cluster0.acug8d2.mongodb.net/?retryWrites=true&w=majority")
 db = client["image_tags_db"]
+collection = db["image_tags"]
 collection = db["transformation_logs"]
 
 # Initialize a list to store transformation logs
