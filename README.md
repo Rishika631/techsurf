@@ -2,7 +2,7 @@
 The Digital Asset Management (DAM) app is a full-stack web application developed using Streamlit. It empowers users to manage and manipulate digital images efficiently. The app offers a range of features, including image transformation, AI-powered image analysis, image resizing with AI analysis, built in drawing canvas and image optimization and also store all the changes made in the images as logs in the backend so that the user can go back and see changes, revert back to a particular unedited picture, for collabaration it can be helpful to see who did what changes and many more4 uses of logging the editing of images.
 
 ## Deployed website link: https://techsurfrishika.streamlit.app/
-## Live video demo link: [https://drive.google.com/file/d/1ai2EYw-NWQfC8MWsM7FGfet_l0iqTURx/view?usp=sharing](https://drive.google.com/file/d/1x7OlDUPK88rCkIYkFvCLYnU0niap28wt/view?usp=sharing)
+## Live video demo link: https://drive.google.com/file/d/1x7OlDUPK88rCkIYkFvCLYnU0niap28wt/view?usp=sharing
 
 # Table of Contents
 
@@ -35,13 +35,19 @@ MongoDB: For storing generated captions and image tags.
 
 # Installation
 ## Clone the repository to your local machine:
-
-## Clone the Repository
-
 ```ruby
-git clone [https://github.com/yourusername/dam-app.git](https://github.com/Rishika631/techsurf.git)
+git clone https://github.com/Rishika631/techsurf.git
+```
+## Go to techsurf directory
+```ruby
 cd techsurf
+```
+## Install requirements
+```ruby
 pip install -r requirements.txt
+```
+## Install streamlit in local system
+```ruby
 pip install streamlit
 ```
 
