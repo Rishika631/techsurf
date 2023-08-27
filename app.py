@@ -16,33 +16,45 @@ headers = {"Authorization": "Bearer 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"}
 # Set up MongoDB connection
 client = pymongo.MongoClient("mongodb+srv://Rishika:taylorswift@cluster0.acug8d2.mongodb.net/?retryWrites=true&w=majority")
 db = client["image_tags_db"]
-collection = db["image_tags"]
+collection = db["image_logs"]
 
 # Initialize a list to store transformation logs
 transformation_logs = []
+
+# Function to log transformation details
+def log_transformation_details(transformation_type, details):
+    log_entry = {
+        "type": transformation_type,
+        "details": details,
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+    }
+    transformation_logs.append(log_entry)
 
 # Image Transformation: Crop
 def crop_image(image, left, top, right, bottom):
     cropped_image = image.crop((left, top, right, bottom))
     
-    # Record transformation details
-    transformation_logs.append({
-        "type": "Crop",
+    # Log transformation details
+    log_transformation_details("Crop", {
         "left": left,
         "top": top,
         "right": right,
         "bottom": bottom,
-        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
     })
 
     return cropped_image
-
-
 
 # Image Transformation: Transform
 def transform_image(image, angle, scale):
     transformed_image = image.rotate(angle)
     transformed_image = transformed_image.resize((int(image.width * scale), int(image.height * scale)))
+    
+    # Log transformation details
+    log_transformation_details("Transform", {
+        "angle": angle,
+        "scale": scale,
+    })
+    
     return transformed_image
 
 # Image Transformation: Focal Point
@@ -133,21 +145,6 @@ def main():
                 cropped_image = crop_image(image, left, top, right, bottom)
                 st.image(cropped_image, use_column_width=True)
 
-                if st.button("Save Image"):
-                if cropped_image is not None:
-                    # Save the cropped image to a file
-                    cropped_image.save("output_cropped.jpg")  # You can use a unique filename
-
-                    # Display a success message
-                    st.success("Image saved successfully!")
-
-                    # Log transformation details to your backend
-                    for log in transformation_logs:
-                        collection.insert_one(log)  # Store the log in your MongoDB collection
-
-                else:
-                    st.warning("No image has been transformed yet.")
-
             elif transformation_option == "Transform":
                 # Transform
                 st.subheader("Transform")
@@ -188,6 +185,20 @@ def main():
                 framed_image = apply_frame(image, padding)
                 st.image(framed_image, use_column_width=True)
 
+            if st.button("Save Image"):
+                if cropped_image is not None:
+                    # Save the cropped image to a file
+                    cropped_image.save("output_cropped.jpg")  # You can use a unique filename
+
+                    # Log transformation details to your backend
+                    for log in transformation_logs:
+                        collection.insert_one(log)  # Store the log in your MongoDB collection
+
+                    # Display a success message
+                    st.success("Image saved successfully!")
+
+                else:
+                    st.warning("No image has been transformed yet.")
             
 
     elif function == "AI Analysis":
