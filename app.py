@@ -18,10 +18,26 @@ client = pymongo.MongoClient("mongodb+srv://Rishika:taylorswift@cluster0.acug8d2
 db = client["image_tags_db"]
 collection = db["image_tags"]
 
+# Initialize a list to store transformation logs
+transformation_logs = []
 
 # Image Transformation: Crop
 def crop_image(image, left, top, right, bottom):
-    return image.crop((left, top, right, bottom))
+    cropped_image = image.crop((left, top, right, bottom))
+    
+    # Record transformation details
+    transformation_logs.append({
+        "type": "Crop",
+        "left": left,
+        "top": top,
+        "right": right,
+        "bottom": bottom,
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+    })
+
+    return cropped_image
+
+
 
 # Image Transformation: Transform
 def transform_image(image, angle, scale):
@@ -156,6 +172,21 @@ def main():
                 padding = st.slider("Padding", 0, 50, 10)
                 framed_image = apply_frame(image, padding)
                 st.image(framed_image, use_column_width=True)
+
+            if st.button("Save Image"):
+                if cropped_image is not None:
+                    # Save the cropped image to a file
+                    cropped_image.save("output_cropped.jpg")  # You can use a unique filename
+
+                    # Display a success message
+                    st.success("Image saved successfully!")
+
+                    # Log transformation details to your backend
+                    for log in transformation_logs:
+                        collection.insert_one(log)  # Store the log in your MongoDB collection
+
+                else:
+                    st.warning("No image has been transformed yet.")
 
     elif function == "AI Analysis":
     # AI Analysis and Tagging
