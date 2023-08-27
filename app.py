@@ -154,6 +154,23 @@ def main():
                 transformed_image = transform_image(image, angle, scale)
                 st.image(transformed_image, use_column_width=True)
 
+            
+        # Add the "Save Image" button here
+            if st.button("Save Image"):
+                if "transformed_image" in locals():
+                # Save the transformed image to a file
+                    transformed_image.save("output_transformed.jpg")  # You can use a unique filename
+
+                # Log transformation details to your backend
+                    for log in transformation_logs:
+                        collection.insert_one(log)  # Store the log in your MongoDB collection
+
+                # Display a success message
+                    st.success("Image saved successfully!")
+
+                else:
+                    st.warning("No image has been transformed yet.")
+
             elif transformation_option == "Focal Point":
                 # Focal Point
                 st.subheader("Focal Point")
