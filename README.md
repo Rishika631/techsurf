@@ -38,12 +38,12 @@ MongoDB: For storing generated captions and image tags.
 
 ## Clone the Repository
 
-```bash
-git clone https://github.com/yourusername/dam-app.git
+```ruby
+git clone [https://github.com/yourusername/dam-app.git](https://github.com/Rishika631/techsurf.git)
 cd techsurf
 pip install -r requirements.txt
 pip install streamlit
-streamlit run app.py'''
+```
 
 Note: Before running the application change openAI key and mongoDB URL with below instructions.
 Set up the OpenAI API key:
@@ -53,14 +53,10 @@ Set up MongoDB connection:
 Replace the MongoDB connection string in the main.py file with your MongoDB connection string.
 
 # How to Use
-Ensure you have activated the virtual environment (if created) using:
-bash
-Copy code
-source venv/bin/activate   # On Windows: venv\Scripts\activate
 Run the Streamlit app:
-bash
-Copy code
-streamlit run main.py
-The app will launch in your browser. Use the sidebar to select the desired function (Image Transformation, AI Analysis, Image Resize, or Image Optimization) and follow the on-screen instructions to upload and manipulate images.
+```ruby
+streamlit run app.py
+```
+The app will launch in your browser. Use the sidebar to select the desired function (Image Transformation, AI Analysis, Image Resize, or Image Optimization or drawing canvas) and follow the on-screen instructions to upload and manipulate images.
 
 For AI Analysis and Image Captioning, make sure to provide the necessary API key and model authorization in the code.
