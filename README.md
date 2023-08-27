@@ -34,20 +34,18 @@ HTML,CSS,Javascript: For generating built in drawing canvas.
 MongoDB: For storing generated captions and image tags.
 
 # Installation
-Clone the repository to your local machine:
+## Clone the repository to your local machine:
 
-'''git clone https://github.com/yourusername/dam-app.git
-cd dam-app
+## Clone the Repository
 
-Create a virtual environment (optional but recommended):
-bash
-Copy code
-python -m venv venv
-source venv/bin/activate   # On Windows: venv\Scripts\activate
-Install the required dependencies:
-bash
-Copy code
+```bash
+git clone https://github.com/yourusername/dam-app.git
+cd techsurf
 pip install -r requirements.txt
+pip install streamlit
+streamlit run app.py'''
+
+Note: Before running the application change openAI key and mongoDB URL with below instructions.
 Set up the OpenAI API key:
 Replace <APIKEY> in the main.py file with your actual OpenAI API key.
 
