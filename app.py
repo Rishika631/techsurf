@@ -36,15 +36,6 @@ def log_transformation_details(transformation_type, details):
 # Image Transformation: Crop
 def crop_image(image, left, top, right, bottom):
     cropped_image = image.crop((left, top, right, bottom))
-    
-    # Log transformation details
-    log_transformation_details("Crop", {
-        "left": left,
-        "top": top,
-        "right": right,
-        "bottom": bottom,
-    })
-
     return cropped_image
 
 # Image Transformation: Transform
@@ -148,12 +139,23 @@ def main():
                 cropped_image = crop_image(image, left, top, right, bottom)
                 st.image(cropped_image, use_column_width=True)
 
-                log_transformation_details("Crop", {
-                    "left": left,
-                    "top": top,
-                    "right": right,
-                    "bottom": bottom,
-                })
+                # log_transformation_details("Crop", {
+                #     "left": left,
+                #     "top": top,
+                #     "right": right,
+                #     "bottom": bottom,
+                # })
+                log_entry = {
+                    "type": "Crop",
+                    "details": {
+                     "left": left,
+                     "top": top,
+                     "right": right,
+                     "bottom": bottom,
+                 },
+                    "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                    }
+                collection.insert_one(log_entry)
 
             elif transformation_option == "Transform":
                 # Transform
