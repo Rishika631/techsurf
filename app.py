@@ -186,9 +186,9 @@ def main():
                 st.image(framed_image, use_column_width=True)
 
             if st.button("Save Image"):
-                if cropped_image is not None:
-                    # Save the cropped image to a file
-                    cropped_image.save("output_cropped.jpg")  # You can use a unique filename
+                if "transformed_image" in locals():
+                    # Save the transformed image to a file
+                    transformed_image.save("output_transformed.jpg")  # You can use a unique filename
 
                     # Log transformation details to your backend
                     for log in transformation_logs:
