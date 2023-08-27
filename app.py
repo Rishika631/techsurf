@@ -5,10 +5,10 @@ from PIL import Image, ImageOps, ImageEnhance, ImageFilter
 import os
 import requests
 from datetime import datetime
-from transformers import CLIPModel
 import openai
 import io
 import pymongo
+import base64
 
 # Set your OpenAI API key
 # openai.api_key = <APIKEY>
@@ -101,6 +101,12 @@ def query(file):
     response = requests.post(API_URL, headers=headers, data=file)
     return response.text
 
+def encode_html_as_base64(html_filename):
+    with open(html_filename, "rb") as html_file:
+        html_content = html_file.read()
+    encoded_html = base64.b64encode(html_content).decode("utf-8")
+    return encoded_html
+
 # Image Resize with AI Analysis
 def resize_image_with_analysis(image, width, height):
     resized_image = image.resize((width, height))
@@ -124,7 +130,7 @@ def main():
     st.title("Digital Asset Management App")
 
     # Add a sidebar with function selection
-    function = st.sidebar.selectbox("Select Function", ["Image Transformation", "AI Analysis", "Image Resize","Image Optimization"])
+    function = st.sidebar.selectbox("Select Function", ["Image Transformation", "AI Analysis", "Image Resize","Image Optimization","Drawing Canvas"])
 
     if function == "Image Transformation":
         # Image Transformation
@@ -227,6 +233,14 @@ def main():
             height = st.slider("Height", 100, 2000, 600, 100)
             resized_image = resize_image_with_analysis(image, width, height)
             st.image(resized_image, use_column_width=True)
+
+    elif function == "Drawing Canvas":
+        st.title("Drawing Canvas")
+
+        st.markdown(
+            '<a href="https://rishika631.github.io/techsurf/" target="_blank" rel="noopener noreferrer">Open Drawing Canvas in New Tab</a>',
+            unsafe_allow_html=True
+        )
 
     elif function == "Image Optimization":
         st.title("Image Optimization")
