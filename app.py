@@ -30,6 +30,7 @@ def log_transformation_details(transformation_type, details):
         "details": details,
         "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
     }
+    collection.insert_one(log_entry)
     transformation_logs.append(log_entry)
 
 # Image Transformation: Crop
