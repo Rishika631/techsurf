@@ -35,10 +35,10 @@ MongoDB: For storing generated captions and image tags.
 
 # Installation
 Clone the repository to your local machine:
-bash
-Copy code
-'''git clone https://github.com/yourusername/dam-app.git'''
-cd dam-app
+
+'''git clone https://github.com/yourusername/dam-app.git
+cd dam-app'''
+
 Create a virtual environment (optional but recommended):
 bash
 Copy code
