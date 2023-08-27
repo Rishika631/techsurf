@@ -133,6 +133,21 @@ def main():
                 cropped_image = crop_image(image, left, top, right, bottom)
                 st.image(cropped_image, use_column_width=True)
 
+                if st.button("Save Image"):
+                if cropped_image is not None:
+                    # Save the cropped image to a file
+                    cropped_image.save("output_cropped.jpg")  # You can use a unique filename
+
+                    # Display a success message
+                    st.success("Image saved successfully!")
+
+                    # Log transformation details to your backend
+                    for log in transformation_logs:
+                        collection.insert_one(log)  # Store the log in your MongoDB collection
+
+                else:
+                    st.warning("No image has been transformed yet.")
+
             elif transformation_option == "Transform":
                 # Transform
                 st.subheader("Transform")
@@ -173,20 +188,7 @@ def main():
                 framed_image = apply_frame(image, padding)
                 st.image(framed_image, use_column_width=True)
 
-            if st.button("Save Image"):
-                if cropped_image is not None:
-                    # Save the cropped image to a file
-                    cropped_image.save("output_cropped.jpg")  # You can use a unique filename
-
-                    # Display a success message
-                    st.success("Image saved successfully!")
-
-                    # Log transformation details to your backend
-                    for log in transformation_logs:
-                        collection.insert_one(log)  # Store the log in your MongoDB collection
-
-                else:
-                    st.warning("No image has been transformed yet.")
+            
 
     elif function == "AI Analysis":
     # AI Analysis and Tagging
