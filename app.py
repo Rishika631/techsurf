@@ -148,6 +148,13 @@ def main():
                 cropped_image = crop_image(image, left, top, right, bottom)
                 st.image(cropped_image, use_column_width=True)
 
+                log_transformation_details("Crop", {
+                    "left": left,
+                    "top": top,
+                    "right": right,
+                    "bottom": bottom,
+                })
+
             elif transformation_option == "Transform":
                 # Transform
                 st.subheader("Transform")
@@ -157,21 +164,7 @@ def main():
                 st.image(transformed_image, use_column_width=True)
 
             
-        # Add the "Save Image" button here
-            if st.button("Save Image"):
-                if "transformed_image" in locals():
-                # Save the transformed image to a file
-                    transformed_image.save("output_transformed.jpg")  # You can use a unique filename
-
-                # Log transformation details to your backend
-                    for log in transformation_logs:
-                        collection.insert_one(log)  # Store the log in your MongoDB collection
-
-                # Display a success message
-                    st.success("Image saved successfully!")
-
-                else:
-                    st.warning("No image has been transformed yet.")
+        
 
             elif transformation_option == "Focal Point":
                 # Focal Point
