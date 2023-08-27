@@ -20,6 +20,8 @@ Image Resize with AI Analysis: Users can resize images while preserving essentia
 
 Image Optimization: The app offers image optimization techniques, such as format conversion and compression, to enhance image performance and loading speed.
 
+Drawing Canvas: Explore your creativity with a built-in drawing tool.
+
 # Tech Stack
 The app is built using the following technologies:
 
@@ -28,6 +30,7 @@ PyTorch and torchvision: For image processing and transformations.
 PIL (Python Imaging Library): For image handling and manipulation.
 Hugging Face Transformers: For utilizing the CLIP model for AI analysis.
 OpenAI: For integrating the OpenAI GPT-2 model for image caption generation.
+HTML,CSS,Javascript: For generating built in drawing canvas.
 MongoDB: For storing generated captions and image tags.
 
 # Installation
