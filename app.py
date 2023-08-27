@@ -11,7 +11,7 @@ import pymongo
 import base64
 
 # Set your OpenAI API key
-# openai.api_key = <APIKEY>
+ openai.api_key = <APIKEY>
 API_URL = "https://api-inference.huggingface.co/models/nlpconnect/vit-gpt2-image-captioning"
 headers = {"Authorization": "Bearer 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"}
 # Set up MongoDB connection
