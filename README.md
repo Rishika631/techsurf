@@ -7,8 +7,11 @@ The Digital Asset Management (DAM) app is a full-stack web application developed
 # Table of Contents
 
  Features
+ 
  Tech Stack
+ 
  Installation
+ 
  How to Use
 
 # Features
